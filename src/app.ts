@@ -1,6 +1,7 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import corsOptions from './config/corsOptions';
 import todoRoutes from './routes';
 import { config } from './config/config';
 import dotenv from 'dotenv';

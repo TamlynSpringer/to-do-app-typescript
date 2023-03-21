@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "build": "rm -rf build/ && tsc",
+    "build": "rm -rf build/ && concurrently \"tsc\" \"dist/js/app.js\"",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\"",
     "start": "concurrently \"tsc -w\" \"dist/js/app.js\""
   },
@@ -29,7 +29,6 @@
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.15",
-    "@types/mongoose": "^5.11.97",
     "@types/node": "^18.11.18",
     "concurrently": "^7.6.0",
     "nodemon": "^2.0.20"

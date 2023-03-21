@@ -5,7 +5,7 @@ const router: Router = Router();
 
 router.get('/', (req: Request, res: Response) => {
   res.setHeader('Content-Type', 'text/html')
-  res.end('<h1>Hello World</h1>')
+  res.end('<h1>Server working</h1>')
 })
 
 router.get('/todos', getTodosFromDB);

@@ -3,10 +3,16 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import todoRoutes from './routes';
 import { config } from './config/config';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+
+dotenv.config();
 
 const app: Express = express();
 
 app.use(cors());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(todoRoutes);
 
 mongoose
@@ -18,45 +24,4 @@ mongoose
 ))
 .catch(error => {
   console.log(error)
-})
-
-// mongoose
-//   .connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
-//   .then(() => app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`)
-//     )
-//   )
-//   .catch(error => {
-//     throw error
-//   })
-
-// app.all('*', async (req: Request, res: Response, next: NextFunction) => {
-//   return next(new Error('Invalid route'));
-// })
-
-// app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-//   res.json({
-//     message: err.message || "An unknown error occurred!",
-//   });
-// });
-
-// const initializeConfig = async () => {
-//   try {
-//     await mongoose.connect('mongodb://localhost:27017/auth');
-//     console.log('Connected to MongoDb')
-//   } catch (error) {
-//     console.log(error)
-//   }
-// };
-
-// app.listen(PORT, async () => {
-//   await initializeConfig()
-//   console.log(`App running on port ${PORT}`)
-// });
-
-// const uri: string = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.85ehy59.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`
-// const options = { useNewUrlParser: true, useUnifiedTopology: true }
-// mongoose.set('useFindAndModify', false)
-
-
-
-  
+});

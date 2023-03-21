@@ -2,6 +2,7 @@ import { Response, Request } from 'express';
 import { ITodo } from '../../types/todo';
 import Todo from '../../models/todo';
 
+
 const getTodosFromDB = async (req: Request, res: Response): Promise<void> => {
   try {
     const todos: ITodo[] = await Todo.find()
@@ -12,6 +13,7 @@ const getTodosFromDB = async (req: Request, res: Response): Promise<void> => {
 };
 
 const addTodo = async (req: Request, res: Response): Promise<void> => {
+  console.log(req.body)
   try {
     const body = req.body as Pick<ITodo, 'name' | 'description' | 'status'>
     const todo: ITodo = new Todo({
